@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贾言坤 - 技术总监 & 首席架构师</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue-900: #1e3a8a;
+  --blue-800: #1e40af;
+  --blue-700: #1d4ed8;
+  --blue-600: #1a56db;
+  --blue-500: #2563eb;
+  --blue-400: #3b82f6;
+  --blue-300: #60a5fa;
+  --blue-200: #93c5fd;
+  --blue-100: #bfdbfe;
+  --blue-50: #dbeafe;
+  --blue-25: #eff6ff;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+  --indigo-900: #312e81;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+  --white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--slate-800);
+  background: linear-gradient(180deg, var(--blue-50) 0%, var(--slate-100) 30%, var(--slate-50) 100%);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* ========== PAGE WRAPPER ========== */
+.page-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 0 60px rgba(26, 86, 219, 0.08), 0 0 120px rgba(26, 86, 219, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ========== HERO BANNER ========== */
+.hero-banner {
+  position: relative;
+  background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 25%, var(--blue-600) 50%, var(--indigo-700) 75%, var(--indigo-900) 100%);
+  padding: 56px 60px 44px;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(147, 197, 253, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Grid pattern overlay */
+.hero-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-name {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+}
+
+.hero-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--blue-200);
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.hero-subtitle {
+  font-size: 14px;
+  color: var(--blue-300);
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.metric-item {
+  flex: 1;
+  text-align: center;
+  padding: 16px 8px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+.metric-item:last-child {
+  margin-right: 0;
+}
+
+.metric-value {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.metric-label {
+  display: block;
+  font-size: 12px;
+  color: var(--blue-200);
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* ========== CONTACT BAR ========== */
+.contact-bar {
+  background: linear-gradient(90deg, var(--blue-50), var(--white), var(--blue-50));
+  border-bottom: 1px solid var(--blue-100);
+  padding: 16px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--slate-600);
+  font-weight: 400;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-500);
+  font-size: 14px;
+}
+
+.contact-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--blue-300);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ========== BODY CONTENT ========== */
+.body-content {
+  padding: 48px 60px 56px;
+}
+
+/* ========== SECTION ========== */
+.section {
+  margin-bottom: 44px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--blue-600);
+  position: relative;
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--blue-400);
+}
+
+.section-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blue-600);
+  letter-spacing: 1px;
+}
+
+/* ========== SKILLS TAG CLOUD ========== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.skill-group {
+  background: var(--slate-50);
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--slate-200);
+  transition: all 0.25s ease;
+}
+
+.skill-group:hover {
+  border-color: var(--blue-200);
+  box-shadow: 0 4px 16px rgba(26, 86, 219, 0.08);
+}
+
+.skill-group-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue-600);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-group-title::before {
+  content: '';
+  width: 3px;
+  height: 14px;
+  background: var(--blue-500);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--blue-100);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tag:hover {
+  background: var(--blue-100);
+  border-color: var(--blue-200);
+  transform: translateY(-1px);
+}
+
+.tag-highlight {
+  background: var(--blue-600);
+  color: var(--white);
+  border-color: var(--blue-600);
+}
+
+.tag-highlight:hover {
+  background: var(--blue-700);
+  border-color: var(--blue-700);
+}
+
+/* ========== WORK EXPERIENCE TIMELINE ========== */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--blue-400), var(--blue-200), var(--blue-100));
+  border-radius: 1px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 36px;
+  padding-bottom: 4px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -29px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  background: var(--white);
+  border: 3px solid var(--blue-500);
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 0 0 4px var(--blue-50);
+}
+
+.timeline-item:first-child .timeline-dot {
+  background: var(--blue-500);
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 4px var(--blue-50), 0 0 12px rgba(26, 86, 219, 0.3);
+}
+
+.timeline-item:first-child .timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: var(--white);
+  border-radius: 50%;
+}
+
+.timeline-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: 14px;
+  padding: 24px 28px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.timeline-card:hover {
+  border-color: var(--blue-200);
+  box-shadow: 0 8px 32px rgba(26, 86, 219, 0.1);
+  transform: translateY(-2px);
+}
+
+.timeline-item:first-child .timeline-card {
+  border-color: var(--blue-200);
+  background: linear-gradient(135deg, var(--blue-25), var(--white));
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.timeline-company {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--slate-800);
+}
+
+.timeline-role {
+  font-size: 14px;
+  color: var(--blue-600);
+  font-weight: 600;
+}
+
+.timeline-date {
+  font-size: 13px;
+  color: var(--slate-500);
+  font-weight: 500;
+  white-space: nowrap;
+  background: var(--slate-100);
+  padding: 3px 12px;
+  border-radius: 20px;
+}
+
+.timeline-desc {
+  font-size: 12.5px;
+  color: var(--slate-500);
+  font-style: italic;
+  margin-bottom: 14px;
+  line-height: 1.6;
+  padding-left: 0;
+}
+
+.timeline-bullets {
+  list-style: none;
+  margin-bottom: 16px;
+}
+
+.timeline-bullets li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 10px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--slate-700);
+}
+
+.timeline-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  background: var(--blue-400);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.timeline-bullets li strong {
+  color: var(--blue-700);
+  font-weight: 600;
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.timeline-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid var(--blue-100);
+  white-space: nowrap;
+}
+
+/* ========== ACHIEVEMENT CARDS ========== */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.achievement-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 18px 16px;
+  border: 1px solid var(--slate-200);
+  border-top: 3px solid var(--blue-500);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(26, 86, 219, 0.12);
+  border-top-color: var(--blue-600);
+}
+
+.achievement-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue-700);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.achievement-desc {
+  font-size: 12px;
+  color: var(--slate-600);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.achievement-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--blue-600);
+  color: var(--white);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* ========== PROJECT CARDS ========== */
+.project-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 24px 28px;
+  border: 1px solid var(--slate-200);
+  border-left: 4px solid var(--blue-500);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 28px rgba(26, 86, 219, 0.1);
+  transform: translateX(4px);
+  border-left-color: var(--blue-600);
+}
+
+.project-card:last-child {
+  margin-bottom: 0;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--slate-800);
+}
+
+.project-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--blue-50);
+  color: var(--blue-600);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--blue-200);
+}
+
+.project-outcome {
+  font-size: 13px;
+  color: var(--blue-600);
+  font-weight: 500;
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  background: var(--blue-25);
+  border-radius: 8px;
+  border-left: 3px solid var(--blue-300);
+}
+
+.project-bullets {
+  list-style: none;
+}
+
+.project-bullets li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--slate-700);
+}
+
+.project-bullets li::before {
+  content: '\25B8';
+  position: absolute;
+  left: 0;
+  color: var(--blue-400);
+  font-size: 10px;
+  top: 3px;
+}
+
+/* ========== EDUCATION ========== */
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.education-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--slate-50);
+  border-radius: 12px;
+  border: 1px solid var(--slate-200);
+}
+
+.edu-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.edu-info {
+  flex: 1;
+}
+
+.edu-school {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--slate-800);
+}
+
+.edu-major {
+  font-size: 13px;
+  color: var(--slate-600);
+}
+
+.edu-date {
+  font-size: 12px;
+  color: var(--slate-500);
+  background: var(--slate-200);
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ========== CERTIFICATIONS ========== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.cert-item {
+  text-align: center;
+  padding: 16px 12px;
+  background: var(--blue-25);
+  border: 1px solid var(--blue-100);
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.cert-item:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-200);
+  transform: translateY(-2px);
+}
+
+.cert-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.cert-text {
+  font-size: 12px;
+  color: var(--blue-700);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ========== FOOTER ========== */
+.page-footer {
+  background: var(--slate-800);
+  padding: 20px 60px;
+  text-align: center;
+  color: var(--slate-400);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* ========== DECORATIVE ========== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue-200), transparent);
+  margin: 0 0 44px;
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  body {
+    background: var(--white);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page-wrapper {
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .hero-banner {
+    padding: 36px 40px 28px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .hero-name {
+    font-size: 32px;
+  }
+
+  .body-content {
+    padding: 32px 40px 40px;
+  }
+
+  .timeline-card:hover,
+  .achievement-card:hover,
+  .project-card:hover,
+  .tag:hover,
+  .skill-group:hover,
+  .cert-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .section {
+    break-inside: avoid;
+  }
+
+  .timeline-card {
+    break-inside: avoid;
+  }
+
+  .achievement-card {
+    break-inside: avoid;
+  }
+
+  .project-card {
+    break-inside: avoid;
+  }
+
+  .page-footer {
+    background: var(--slate-800) !important;
+    color: var(--slate-400) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: 36px 24px 28px;
+  }
+
+  .hero-name {
+    font-size: 28px;
+    letter-spacing: 3px;
+  }
+
+  .hero-title {
+    font-size: 16px;
+  }
+
+  .hero-metrics {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .metric-item {
+    flex: 1 1 calc(50% - 4px);
+    margin-right: 0;
+  }
+
+  .contact-bar {
+    padding: 12px 24px;
+    gap: 16px;
+  }
+
+  .body-content {
+    padding: 32px 24px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeline-header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  .metric-item {
+    flex: 1 1 100%;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ==================== HERO BANNER ==================== -->
+  <header class="hero-banner">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <h1 class="hero-name">贾言坤</h1>
+      <div class="hero-title">技术总监 &amp; 首席架构师</div>
+      <div class="hero-subtitle">12 年互联网研发经验 &nbsp;|&nbsp; 6 年+ 团队管理 &nbsp;|&nbsp; 2 次创业</div>
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <span class="metric-value">1200万+</span>
+          <span class="metric-label">平台用户</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value">18万</span>
+          <span class="metric-label">实时在线</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value">45万</span>
+          <span class="metric-label">日UV</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-value">3200+</span>
+          <span class="metric-label">QPS</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CONTACT BAR ==================== -->
+  <div class="contact-bar">
+    <div class="contact-item">
+      <span class="contact-icon">&#9742;</span>
+      <span>180-1266-3434</span>
+    </div>
+    <span class="contact-dot"></span>
+    <div class="contact-item">
+      <span class="contact-icon">&#9993;</span>
+      <span>Johnson_Jia@163.com</span>
+    </div>
+    <span class="contact-dot"></span>
+    <div class="contact-item">
+      <span class="contact-icon">&#9872;</span>
+      <span>上海市宝山区</span>
+    </div>
+    <span class="contact-dot"></span>
+    <div class="contact-item">
+      <span class="contact-icon">&#9775;</span>
+      <span>1993.07.08</span>
+    </div>
+  </div>
+
+  <!-- ==================== BODY CONTENT ==================== -->
+  <div class="body-content">
+
+    <!-- ========== SKILLS ========== -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">&#9878;</div>
+        <h2 class="section-title">技术栈</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">语言 &amp; 框架</div>
+          <div class="skill-tags">
+            <span class="tag tag-highlight">Java</span>
+            <span class="tag tag-highlight">Spring Boot 3</span>
+            <span class="tag">Spring Cloud Alibaba</span>
+            <span class="tag">MyBatis Flex</span>
+            <span class="tag">Spring AI</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">微服务 &amp; 中间件</div>
+          <div class="skill-tags">
+            <span class="tag tag-highlight">Dubbo 3.x</span>
+            <span class="tag tag-highlight">Nacos</span>
+            <span class="tag">RocketMQ</span>
+            <span class="tag">APISIX</span>
+            <span class="tag">Redis Cluster</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">数据 &amp; 存储</div>
+          <div class="skill-tags">
+            <span class="tag tag-highlight">PostgreSQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">达梦</span>
+            <span class="tag">Elasticsearch</span>
+            <span class="tag">Redisson</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">云原生 &amp; DevOps</div>
+          <div class="skill-tags">
+            <span class="tag tag-highlight">Kubernetes</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Prometheus</span>
+            <span class="tag">Pinpoint</span>
+            <span class="tag">ELK</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">AI &amp; 前沿</div>
+          <div class="skill-tags">
+            <span class="tag tag-highlight">Claude Code</span>
+            <span class="tag tag-highlight">DeepSeek</span>
+            <span class="tag">AgentScope</span>
+            <span class="tag">知识图谱</span>
+            <span class="tag">RAG / Agent</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">多媒体处理</div>
+          <div class="skill-tags">
+            <span class="tag tag-highlight">FFmpeg</span>
+            <span class="tag">LibreOffice</span>
+            <span class="tag">OSS / TOS / S3</span>
+            <span class="tag">CDN</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== WORK EXPERIENCE ========== -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">&#9776;</div>
+        <h2 class="section-title">工作经历</h2>
+      </div>
+      <div class="timeline">
+
+        <!-- Job 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-company">上海时代光华教育发展有限公司 <span style="font-size:12px;color:var(--slate-400);font-weight:400;">(21tb.com)</span></div>
+                <div class="timeline-role">技术总监 &amp; 首席架构师</div>
+              </div>
+              <div class="timeline-date">2018.05 — 至今</div>
+            </div>
+            <div class="timeline-desc">国内领先的企业数智化在线学习平台服务商，成立于 2000 年，"平台 + 内容 + 运营"一站式解决方案，服务数千家中大型企业。</div>
+            <ul class="timeline-bullets">
+              <li><strong>架构全面升级：</strong>入职时平台技术栈停留在十年前（Struts2 / Spring 3.x / JDK 1.6），主导并推动 7 年持续架构演进，覆盖 100+ 后端项目，历经 Struts2&rarr;SpringBoot&rarr;Spring Cloud&rarr;Spring Cloud Alibaba&rarr;JDK 21 / SpringBoot 3.5 / SpringCloud 2025 五轮大升级，全部零停机迁移</li>
+              <li><strong>SaaS Box 创新业务模式：</strong>设计开发"以租代售、本地化部署"新模式，攻克版本同步、资源缩减、兼容性适配、定制代码管理四大核心难题，完成 65 个关键项目合并整合，2025 年 Q1 上线，半年内成功部署 5 家头部客户，每季度节省买断版本制作成本 20 万元</li>
+              <li><strong>新文件服务器：</strong>2024 年从零设计新一代文件服务器，支持 50+ 格式转码，集成阿里云 OSS / 火山云 TOS / AWS S3，全球 CDN 加速。上线半年即有 874 家客户开通，节省第三方点播支出 34 万元，建立自主可控的文件服务体系</li>
+              <li><strong>达梦数据库国产化适配：</strong>2024 年主导达梦数据库全量适配，一次性通过全量测试验收，实现 PostgreSQL / MySQL / 达梦 / TiDB 多数据库兼容架构，为公司开拓国企、央企千亿级国产化 IT 服务市场提供关键支撑</li>
+              <li><strong>安全合规体系：</strong>2024 年完成全应用越权漏洞修复、XSS / CSRF 防护，3 个月内通过 50+ 家客户安全审计</li>
+              <li><strong>企业级 AI 自动化编程落地：</strong>2025 年制定《AI 研发提效方案》与《企业级 AI 自动化编程落地实现方案》，构建 RAG 向量数据库 + Skill 仓库 + Agent 体系，实现"语音需求 &rarr; AI 自动化执行 &rarr; 审核部署"全流程闭环，推行 3 个月开发效率提升 77.5%&mdash;90%</li>
+              <li><strong>高并发优化：</strong>万人级直播全链路优化（SSO 极速模式、Session 预热、带宽优化），保障稳定运行</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="timeline-tag">SpringBoot 3.5</span>
+              <span class="timeline-tag">JDK 21</span>
+              <span class="timeline-tag">Spring Cloud Alibaba</span>
+              <span class="timeline-tag">Dubbo 3.x</span>
+              <span class="timeline-tag">Nacos</span>
+              <span class="timeline-tag">RocketMQ</span>
+              <span class="timeline-tag">Redis Cluster</span>
+              <span class="timeline-tag">K8s</span>
+              <span class="timeline-tag">APISIX</span>
+              <span class="timeline-tag">PostgreSQL</span>
+              <span class="timeline-tag">达梦</span>
+              <span class="timeline-tag">FFmpeg</span>
+              <span class="timeline-tag">Claude Code</span>
+              <span class="timeline-tag">Spring AI</span>
+              <span class="timeline-tag">RAG</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-company">苏格拉底（北京）科技有限公司 <span style="font-size:11px;color:var(--blue-500);font-weight:600;background:var(--blue-50);padding:1px 6px;border-radius:4px;margin-left:4px;">创业</span></div>
+                <div class="timeline-role">CTO / 技术负责人</div>
+              </div>
+              <div class="timeline-date">2017.06 — 2018.05</div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>从 0 到 1 搭建 80+ 人研发团队，建立技术梯队与人才培养体系</li>
+              <li>主导 E-learning SaaS 平台技术栈全面升级，从 Struts2 单体架构演进出 Spring Cloud Alibaba 微服务架构与 K8s 云原生部署</li>
+              <li>平台用户 1200 万+，1 年内日活从 13 万提升至 45 万，日 PV 2 亿+，QPS 3200+</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Spring Cloud Alibaba</span>
+              <span class="timeline-tag">Dubbo</span>
+              <span class="timeline-tag">Redis 集群</span>
+              <span class="timeline-tag">Kubernetes</span>
+              <span class="timeline-tag">APISIX</span>
+              <span class="timeline-tag">Pinpoint</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-company">上海冕冠电子商务有限公司</div>
+                <div class="timeline-role">系统架构设计师</div>
+              </div>
+              <div class="timeline-date">2016.07 — 2017.06</div>
+            </div>
+            <div class="timeline-desc">运营"药材买卖网"中药材 B2B 平台，获知名天使投资人王刚 1000 万投资，A 轮估值 1 亿元。</div>
+            <ul class="timeline-bullets">
+              <li>将 jfinal 单体架构重构为 Dubbo + Zookeeper 分布式架构，数据库性能提升 20%+</li>
+              <li>引入 Redis 分布式缓存，设计药材分词检索引擎，搭建完整生产与测试环境</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="timeline-tag">Dubbo</span>
+              <span class="timeline-tag">Zookeeper</span>
+              <span class="timeline-tag">Spring MVC</span>
+              <span class="timeline-tag">Redis</span>
+              <span class="timeline-tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 4 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-company">上海华夏鑫彩科技有限公司</div>
+                <div class="timeline-role">Java 开发工程师</div>
+              </div>
+              <div class="timeline-date">2014.07 — 2015.09</div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>负责华夏终端机支付系统设计与开发，需求分析、技术评估、团队管理</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== CORE ACHIEVEMENTS ========== -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">&#9733;</div>
+        <h2 class="section-title">核心成就</h2>
+      </div>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-number">1</div>
+          <div class="achievement-title">SaaS Box 创新业务模式</div>
+          <div class="achievement-desc">"以租代售"新模式，65 个项目合并整合，上线半年即部署 5 家客户，每季度节省 20 万</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">2</div>
+          <div class="achievement-title">千万级平台运营</div>
+          <div class="achievement-desc">1200 万+ 用户，日 PV 2 亿+，QPS 3200+，1 年内日活 13 万&rarr;45 万</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">3</div>
+          <div class="achievement-title">新文件服务器自主可控</div>
+          <div class="achievement-desc">上线半年即有 874 家客户开通，节省 34 万，摆脱第三方云服务依赖</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">4</div>
+          <div class="achievement-title">全栈架构升级</div>
+          <div class="achievement-desc">入职 7 年持续推动，100+ 项目五轮大升级，从 Struts2 到 JDK21 全部零停机</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">5</div>
+          <div class="achievement-title">企业级 AI 自动化编程</div>
+          <div class="achievement-desc">RAG + Skill + Agent 全流程闭环，推行 3 个月开发效率提升 77%&mdash;90%</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">6</div>
+          <div class="achievement-title">信创国产化适配</div>
+          <div class="achievement-desc">达梦数据库一次性通过全量验收，打通千亿级国产化 IT 服务市场</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">7</div>
+          <div class="achievement-title">安全合规体系</div>
+          <div class="achievement-desc">3 个月内通过 50+ 家客户安全审计，全应用越权 / XSS 漏洞修复完成</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-number">8</div>
+          <div class="achievement-title">年度成本节省 58 万+</div>
+          <div class="achievement-desc">四大核心项目累计节省超 58 万元，SaaS Box 上线半年新增 5 家核心客户</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== STRATEGIC PROJECTS ========== -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">&#9881;</div>
+        <h2 class="section-title">战略项目</h2>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">SaaS Box 以租代售平台</div>
+          <span class="project-badge">业务创新</span>
+        </div>
+        <div class="project-outcome"><strong>成果：</strong>2025 Q1 上线，半年内 5 家客户成功部署，每季度节省 20 万，打破低配置部署壁垒</div>
+        <ul class="project-bullets">
+          <li>攻克版本同步、资源缩减、第三方兼容、定制代码管理四大核心技术难题</li>
+          <li>完成 115 个后端项目中 65 个关键项目的合并整合，搭建完整打包合并工具</li>
+          <li>实现买断客户本地化部署 + SaaS 版本持续迭代的双重优势</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">企业级 AI 自动化编程</div>
+          <span class="project-badge">AI 战略</span>
+        </div>
+        <div class="project-outcome"><strong>成果：</strong>2025 年推行，3 个月内开发效率提升 77%&mdash;90%，AI 代码提交占比 76.6%</div>
+        <ul class="project-bullets">
+          <li>制定《基于 AI 的企业研发提效方案》，全员 Claude Code 培训覆盖率 100%</li>
+          <li>制定《企业级 AI 自动化编程落地实现方案》，构建 RAG 向量数据库 + Skill 仓库 + 多 Agent 协同体系</li>
+          <li>实现"语音需求输入 &rarr; AI 自动化执行 &rarr; 审核部署"全流程闭环，目标交付效率提升 60%+</li>
+          <li>培育 AI 辅助型全栈工程师，打破前后端岗位壁垒，跨岗位任务效率提升 50%</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">新文件服务器</div>
+          <span class="project-badge">降本增效</span>
+        </div>
+        <div class="project-outcome"><strong>成果：</strong>2024 年上线，半年内 874 家客户开通，节省 34 万，建立自主可控体系</div>
+        <ul class="project-bullets">
+          <li>自主研发视频转码、切片、鉴权、加密核心技术，摆脱第三方点播服务依赖</li>
+          <li>支持 50+ 文件格式转码，集成阿里云 OSS / 火山云 TOS / AWS S3，全球 CDN 加速</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== EDUCATION ========== -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">&#9778;</div>
+        <h2 class="section-title">教育背景</h2>
+      </div>
+      <div class="education-list">
+        <div class="education-item">
+          <div class="edu-icon">&#127891;</div>
+          <div class="edu-info">
+            <div class="edu-school">苏州科技大学</div>
+            <div class="edu-major">计算机科学与技术 &middot; 专升本</div>
+          </div>
+          <div class="edu-date">2020.03 — 2022.07</div>
+        </div>
+        <div class="education-item">
+          <div class="edu-icon">&#127891;</div>
+          <div class="edu-info">
+            <div class="edu-school">河南大学</div>
+            <div class="edu-major">计算机多媒体技术</div>
+          </div>
+          <div class="edu-date">2013.03 — 2015.07</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== CERTIFICATIONS ========== -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-icon">&#9745;</div>
+        <h2 class="section-title">资质认证</h2>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-item">
+          <span class="cert-icon">&#128218;</span>
+          <div class="cert-text">系统架构设计师<br>（软考高级）</div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">&#128187;</span>
+          <div class="cert-text">NTC 高级软件开发<br>（优秀）</div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">&#128640;</span>
+          <div class="cert-text">2 次创业经验</div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">&#128101;</span>
+          <div class="cert-text">80+ 人研发团队<br>管理经验</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="page-footer">
+    TECH BLUE RESUME &nbsp;&middot;&nbsp; 贾言坤 &nbsp;&middot;&nbsp; 技术总监 &amp; 首席架构师
+  </footer>
+
+</div>
+
+</body>
+</html>
